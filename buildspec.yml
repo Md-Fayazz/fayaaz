@@ -13,6 +13,32 @@ phases:
       - cd AD-Steering-Control
       # Run your build commands
       - .\.env\Build_jenkins_global.bat
+  post_build:
+    commands:
+      # Check if the build status is success or failure
+      if [ $CODEBUILD_BUILD_SUCCEEDING -eq 0 ]; then
+        # Build failure
+        export BUILD_STATUS="failure"
+      else
+        # Build success
+        export BUILD_STATUS="success"
+      fi
+
+      # Define payload
+      export PAYLOAD='{
+        "build_status": "'"$BUILD_STATUS"'",
+        "Label": "'"$LABEL"'",
+        "SHA": "'"$SHA"'",
+        "GITHUB_REPO_OWNER": "'"$GITHUB_REPO_OWNER"'",
+        "GITHUB_REPO_NAME": "'"$GITHUB_REPO_NAME"'"
+      }'
+
+      # Post to the endpoint
+      curl -X POST \
+        -H "Content-Type: application/json" \
+        -d "$PAYLOAD" \
+        https://a215-223-233-87-60.ngrok-free.app/jenkins/awsupdate
+
 artifacts:
   files:
     - '**/*'
