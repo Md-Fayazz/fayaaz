@@ -1,0 +1,6 @@
+
+.build/
+.conan/
+
+# ignore vscode related settings
+.vscode/launch.json

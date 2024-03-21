@@ -1,0 +1,9 @@
+{
+ "remotes": [
+  {
+   "name": "conan-local",
+   "url": "https://adevoppss.jfrog.io/artifactory/api/conan/conan-local",
+   "verify_ssl": true
+  }
+ ]
+}

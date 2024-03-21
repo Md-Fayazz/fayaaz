@@ -1,0 +1,19 @@
+{
+    "skipTerminateQuickPick": false,
+    "skipSwitchToOutput": false,
+    "skipErrorMessage": false,
+    "commands": [
+        {
+            "language": "c",
+            "text": "Run Test",
+            "tooltip": "This button executes Tests for the complete project",
+            "color": "yellow",
+            "commandType": "exec",
+            "command": "cmake --build ${workspaceFolder}\\.build --target all_test",
+            "alignment": "left",
+            "skipTerminateQuickPick": false,
+            "skipSwitchToOutput":false,
+            "priority": 1
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+[requires]
+gcc/13.1.0_test@demo/testing
+python/3.10.0_temp@demo/testing
+vscode/1.85.1@demo/testing
+cmake/3.26.5@demo/testing
+pclint/1.0.2@demo/test
+tresos/29.2.1@demo/test
+xml/0.0.2@demo/test
+java/1.8.0@demo/test
+plantuml/1.2021.5@demo/test
+qac/2.3.2@demo/test
+
+[generators]
+virtualenv
+cmake
