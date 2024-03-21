@@ -1,3 +1,4 @@
+
 version: 0.2
 
 phases:
@@ -5,14 +6,15 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - echo "SOURCE_BRANCH is $SOURCE_BRANCH"
-      - git clone --recurse-submodules -b $SOURCE_BRANCH https://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@github.com/Hussain-ADevOps/AD-Steering-Control 
-      - pip install conan==1.60
+      # - git clone --recurse-submodules -b $SOURCE_BRANCH https://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@github.com/Hussain-ADevOps/AD-Steering-Control 
+      # - pip install conan==1.60
   build:
     commands:
-
-      - cd AD-Steering-Control
-      # Run your build commands
-      - .\.env\Build_jenkins_global.bat
+      - echo "running build"
+      - echo "build syage completed"
+      # - cd AD-Steering-Control
+      # # Run your build commands
+      # - .\.env\Build_jenkins_global.bat
   post_build:
     commands:
       # Check if the build status is success or failure
