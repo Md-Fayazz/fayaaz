@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-vscode.cmake-tools",
+		"ms-vscode.cpptools",
+		"formulahendry.code-runner",
+		"ms-python.python",
+		"eamodio.gitlens",
+		"gsppvo.vscode-commandbar"
+    ]
+}

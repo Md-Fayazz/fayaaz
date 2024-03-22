@@ -1,0 +1,12 @@
+[
+    {
+        "name": "conan build",
+        "toolchainFile": "${workspaceRoot}\\BuildEnv\\cmake\\toolchain\\conan_build.cmake",
+        "preferredGenerator": {
+            "name": "Ninja"
+        },
+        "environmentVariables": {
+            "PATH": "${env:PATH}"
+        }
+    }
+]

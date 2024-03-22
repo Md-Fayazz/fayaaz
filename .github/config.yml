@@ -1,0 +1,22 @@
+jobs:
+  - targetBranch: main
+    jenkinsUrl: 'https://a-devops-jenkins.serveo.net/job/AD.steering.control.main.build/'
+    triggers:
+      pull_request:
+        labels:
+          - Check
+          - Merge
+  - targetBranch: release
+    jenkinsUrl: 'https://a-devops-jenkins.serveo.net/job/AD.steering.control.main.release/'
+    triggers:
+      pull_request:
+        labels:
+          - Check
+          - Merge
+  - targetBranch: main
+    awspipeline_url: 'https://us-east-1.console.aws.amazon.com/codesuite/codebuild/039635109913/projects/AD-steeringcontrolmain-build/?region=us-east-1'
+    triggers:
+      pull_request:
+        labels:
+          - awscheck
+          - awsmerge

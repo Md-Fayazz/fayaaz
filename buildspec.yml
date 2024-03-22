@@ -1,0 +1,48 @@
+
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - echo "SOURCE_BRANCH is $SOURCE_BRANCH"
+      # - git clone --recurse-submodules -b $SOURCE_BRANCH https://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@github.com/Hussain-ADevOps/AD-Steering-Control 
+      # - pip install conan==1.60
+  build:
+    commands:
+      - echo "running build"
+      - echo "build syage completed"
+      # - cd AD-Steering-Control
+      # # Run your build commands
+      # - .\.env\Build_jenkins_global.bat
+  post_build:
+    commands:
+      # Check if the build status is success or failure
+      if [ $CODEBUILD_BUILD_SUCCEEDING -eq 0 ]; then
+        # Build failure
+        export BUILD_STATUS="failure"
+      else
+        # Build success
+        export BUILD_STATUS="success"
+      fi
+
+      # Define payload
+      export PAYLOAD='{
+        "build_status": "'"$BUILD_STATUS"'",
+        "Label": "'"$LABEL"'",
+        "SHA": "'"$SHA"'",
+        "GITHUB_REPO_OWNER": "'"$GITHUB_REPO_OWNER"'",
+        "GITHUB_REPO_NAME": "'"$GITHUB_REPO_NAME"'"
+      }'
+
+      # Post to the endpoint
+      curl -X POST \
+        -H "Content-Type: application/json" \
+        -d "$PAYLOAD" \
+        https://dc63-103-28-246-91.ngrok-free.app/jenkins/awsupdate
+
+artifacts:
+  files:
+    - '**/*'
+  name: main_build
+  discard-paths: no
